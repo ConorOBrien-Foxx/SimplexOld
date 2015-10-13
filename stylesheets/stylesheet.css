@@ -166,7 +166,9 @@ pre {
 table {
   width: 100%;
   margin: 0 0 20px 0;
+  border-collapse: collapse;
 }
+
 
 th {
   text-align: left;
@@ -175,6 +177,10 @@ th {
 }
 
 td {
+  border-top: 1px solid grey;
+  border-top: 1px solid rgba(255,255,255,.3);
+  border-bottom: 1px solid grey;
+  border-bottom: 1px solid rgba(255,255,255,.3);
   padding: 5px 10px;
 }
 
