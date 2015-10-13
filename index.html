@@ -55,6 +55,132 @@
 
 <h1>
 <a id="commands" class="anchor" href="#commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commands</h1>
+      <table><tr><td>A</td><td>Adds the current byte to the previous byte and removes the current byte, </td></tr>
+
+decrements pointer
+<tr><td>B</td><td>Converts the byte to binary</td></tr>
+<tr><td>C</td><td>(empty)</td></tr>
+<tr><td>D</td><td>Sets the current byte to twice its value</td></tr>
+<tr><td>E</td><td>Raises the previous byte the (current byte)th power and removes the current </td></tr>
+
+byte, decrements pointer
+<tr><td>F</td><td>Goes back n characters in the source code, where n is the current byte. </td></tr>
+
+Deletes the current byte.
+<tr><td>G</td><td>Asks for single-char input and Manhattan-adds it to the current byte</td></tr>
+<tr><td>H</td><td>Sorts the current strip by numeric value; resets the pointer</td></tr>
+<tr><td>I</td><td>Increments the byte</td></tr>
+<tr><td>J</td><td>(empty)</td></tr>
+<tr><td>K</td><td>(empty)</td></tr>
+<tr><td>L</td><td>Goes left a byte</td></tr>
+<tr><td>M</td><td>Decrements the byte</td></tr>
+<tr><td>N</td><td>Toggles newline mode. Default is true. If true, every numeric output is </td></tr>
+
+followed by a newline. Else, nothing follows each number. (Trailing Newlines)
+<tr><td>O</td><td>Goes to the (current byte)th position in the source code</td></tr>
+<tr><td>P</td><td>Manhattan adds pi = 3.141592653589793… to the stack</td></tr>
+<tr><td>Q</td><td>Adds program source code to outer program, from the beginning (exclusive of </td></tr>
+
+! characters, if the current byte is not zero) If byte is 2, duplicates current 
+
+command as well.
+<tr><td>R</td><td>Goes right a byte</td></tr>
+<tr><td>S</td><td>Subtracts the current byte from the previous byte and removes the current </td></tr>
+
+byte, decrements pointer
+<tr><td>T</td><td>Multiplies the previous byte by the current byte and removes the current </td></tr>
+
+byte, decrements pointer
+<tr><td>U</td><td>Sets the current byte to half its value</td></tr>
+<tr><td>V</td><td>Divides the previous byte by the current byte and removes the current byte, </td></tr>
+
+decrements pointer
+<tr><td>W</td><td>Add 32 to the current byte.</td></tr>
+<tr><td>X</td><td>Sets the current byte to a random integer from 0 to the current byte</td></tr>
+<tr><td>Y</td><td>Floors the current value</td></tr>
+<tr><td>Z</td><td>Subtract 32 from the current byte.</td></tr>
+<tr><td>a</td><td>Make the number negative</td></tr>
+<tr><td>b</td><td>Asks for input that will store each character into a byte on the strip in </td></tr>
+
+order.
+<tr><td>c</td><td>Copies the current byte to the next byte and increments the pointer.</td></tr>
+<tr><td>d</td><td>Reverses the entire strip/tuple (tuple check first)</td></tr>
+<tr><td>e</td><td>Manhattan adds e = 2.718281828459045… to the stack.</td></tr>
+<tr><td>f</td><td>Turns off safety mode.</td></tr>
+<tr><td>g</td><td>Clears the strip and outputs it as ASCII characters, or, if tuple: deletes </td></tr>
+
+the tuple and output its characters as ASCII.
+<tr><td>h</td><td>Defines a macro Q for the following instruction/code block; Q starts at 0; </td></tr>
+
+after every call of h, Q increments. When followed by a number, activates call 
+
+func: hQ. There is an implicit [ after the h, so a closing ] is required.
+<tr><td>i</td><td>Asks for input as a number and stores it.</td></tr>
+<tr><td>j</td><td>Inserts a new cell at the pointer, pushing everything right.</td></tr>
+<tr><td>k</td><td>Skips the next command/command block</td></tr>
+<tr><td>l</td><td>Writes the number of non-empty cells in the strip to the current cell</td></tr>
+<tr><td>m</td><td>Writes the index of the pointer to the cell</td></tr>
+<tr><td>n</td><td>Logically negates the current byte</td></tr>
+<tr><td>o</td><td>Outputs the current byte as a number</td></tr>
+<tr><td>p</td><td>Removes cell at the pointer, pulling everything to the right leftwards; </td></tr>
+
+moves pointer leftwards
+<tr><td>q</td><td>Checks for membership in a tuple (tupleByte member <=> member IN </td></tr>
+
+tupleByte), like this: (t1,…,tN) M → (q) → (t1,…,tN) C; C is whether (1) or not (0) 
+
+M in (t1,…,tN).
+<tr><td>r</td><td>Reverses the current number (byte), removing leading zeroes. </td></tr>
+
+(1000→1;2340→432;1234→4321)
+<tr><td>s</td><td>Outputs the current byte as a string character</td></tr>
+<tr><td>t</td><td>Applies the next character's function (supports […]) to every member of the </td></tr>
+
+current strip
+<tr><td>u</td><td>Increments the strip number ("goes up")</td></tr>
+<tr><td>v</td><td>Decrements the strip number ("goes down")</td></tr>
+<tr><td>w</td><td>(empty)</td></tr>
+<tr><td>x</td><td>A confirmation message; if "ok", 1 is stored to the current byte; 0 </td></tr>
+
+otherwise.
+<tr><td>y</td><td>Takes the current byte n and takes the n previous entries and pushes it </td></tr>
+
+into a tuple, then storing the tuple in the byte n bytes away OR if the current 
+
+byte is a tuple, expands the tuple into n bytes (inclusive of the current byte, 
+
+going out.)
+<tr><td>z</td><td>Resets the byte to zero</td></tr>
+<tr><td>0-9</td><td>Manhattan adds the number to the byte</td></tr>
+<tr><td>?</td><td>Skips the next command (block) if the byte is zero.</td></tr>
+<tr><td>[…]</td><td>Block statement. Read by ? as "one character".</td></tr>
+<tr><td>{…}</td><td>While loop. Execution continues until the current byte is zero.</td></tr>
+<tr><td>!…!</td><td>Comments!</td></tr>
+<tr><td>@</td><td>Copies the current byte to the register OR if there is a value in the </td></tr>
+
+register, empties the register onto the current byte
+<tr><td>#</td><td>Stops evaluation</td></tr>
+<tr><td>;</td><td>Pushes the current character to the outer program (ability to compile to </td></tr>
+
+itself); if there are characters on the outer program at the end of execution, 
+
+evaluates the outer program as the inner program.
+`This command's effect varies, being dependant on the number of instances in 
+
+the program of it: (1 instances) Suppresses evaluation of outer program. (2 
+
+instances) and instead outputs it. (3 instances) Evaluates outer program, copying 
+
+the current program to the next outer program.
+<tr><td>~</td><td>Switches the current value with the previous value</td></tr>
+<tr><td>*</td><td>Copy to the next cell, pushing cells right</td></tr>
+<tr><td>=</td><td>N = current index. S = strip. S[N] = S[N] == S[N-1] (Equality testing)</td></tr>
+<tr><td>></td><td>N = current index. S = strip. S[N] = S[N] > S[N-1] (Inequality testing)</td></tr>
+<tr><td>&lt;</td><td>N = current index. S = strip. S[N] = S[N] &lt; S[N-1] (Inequality testing)</td></tr>
+<tr><td>"</td><td>Toggle string-parsing mode. In string-parsing mode, char codes are written to the current byte and the pointer incremented. E.g., "Alive" would write values 65, 108, 105, 118, 101 to the current byte, the byte after that, etc.</td></tr>
+<tr><td>'</td><td>Sets the current byte to the next char code.</td></tr>
+<tr><td>(…)n</td><td>Repeats … n times (pre-code compilation). If left off, assumed to be repeated once.</td></tr>
+</table>
       </section>
     </div>
 
