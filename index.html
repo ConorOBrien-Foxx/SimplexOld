@@ -57,30 +57,34 @@
 <a id="commands" class="anchor" href="#commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commands</h1>
 <table><tr><td>A</td><td>Adds the current byte to the previous byte and removes the current byte, decrements pointer</td></tr>
 <tr><td>B</td><td>Converts the byte to binary</td></tr>
-<tr><td>C</td><td>(empty)</td></tr>
+<tr><td>C</td><td>Takes the following regex and matches it with the strip, treating each value as a character in a string (see "regex form" below)</td></tr>
 <tr><td>D</td><td>Sets the current byte to twice its value</td></tr>
 <tr><td>E</td><td>Raises the previous byte the (current byte)th power and removes the current byte, decrements pointer</td></tr>
-<tr><td>F</td><td>Goes back n characters in the source code, where n is the current byte. Deletes the current byte.</td></tr>
+<tr><td>F</td><td>Goes back <i>n</i> characters in the source code, where n is the current byte. Deletes the current byte.</td></tr>
 <tr><td>G</td><td>Asks for single-char input and Manhattan-adds it to the current byte</td></tr>
 <tr><td>H</td><td>Sorts the current strip by numeric value; resets the pointer</td></tr>
 <tr><td>I</td><td>Increments the byte</td></tr>
-<tr><td>J</td><td>(empty)</td></tr>
-<tr><td>K</td><td>(empty)</td></tr>
+<tr><td>J</td><td>Sets the previous byte to the maximum of the current byte and the previous byte, sets the previous byte to zero OR if there is a tuple at the current byte, returns the max element of that tuple.
+</td></tr>
+<tr><td>K</td><td>Splits the current number up into digits, inside a tuple.
+</td></tr>
 <tr><td>L</td><td>Goes left a byte</td></tr>
 <tr><td>M</td><td>Decrements the byte</td></tr>
 <tr><td>N</td><td>Toggles newline mode. Default is true. If true, every numeric output is followed by a newline. Else, nothing follows each number. (Trailing Newlines)</td></tr>
 <tr><td>O</td><td>Goes to the (current byte)th position in the source code</td></tr>
 <tr><td>P</td><td>Manhattan adds pi = 3.141592653589793… to the stack</td></tr>
-<tr><td>Q</td><td>Adds program source code to outer program, from the beginning (exclusive of ! characters, if the current byte is not zero) If byte is 2, duplicates current command as well.</td></tr>
+<tr><td>Q</td><td>Adds program source code to outer program, from the beginning (exclusive of ! characters, if the current byte is not zero) If byte is 2, duplicates current command</td></tr>
 <tr><td>R</td><td>Goes right a byte</td></tr>
 <tr><td>S</td><td>Subtracts the current byte from the previous byte and removes the current byte, decrements pointer</td></tr>
 <tr><td>T</td><td>Multiplies the previous byte by the current byte and removes the current byte, decrements pointer</td></tr>
 <tr><td>U</td><td>Sets the current byte to half its value</td></tr>
 <tr><td>V</td><td>Divides the previous byte by the current byte and removes the current byte, decrements pointer</td></tr>
-<tr><td>W</td><td>Add 32 to the current byte.</td></tr>
+<tr><td>W</td><td>Converts number/character to a generic base, held in the register
+</td></tr>
 <tr><td>X</td><td>Sets the current byte to a random integer from 0 to the current byte</td></tr>
 <tr><td>Y</td><td>Floors the current value</td></tr>
-<tr><td>Z</td><td>Subtract 32 from the current byte.</td></tr>
+<tr><td>Z</td><td>Converts current number from a base held in the register to base 10
+</td></tr>
 <tr><td>a</td><td>Make the number negative</td></tr>
 <tr><td>b</td><td>Asks for input that will store each character into a byte on the strip in order.</td></tr>
 <tr><td>c</td><td>Copies the current byte to the next byte and increments the pointer.</td></tr>
@@ -104,7 +108,7 @@
 <tr><td>t</td><td>Applies the next character's function (supports […]) to every member of the current strip</td></tr>
 <tr><td>u</td><td>Increments the strip number ("goes up")</td></tr>
 <tr><td>v</td><td>Decrements the strip number ("goes down")</td></tr>
-<tr><td>w</td><td>(empty)</td></tr>
+<tr><td>w</td><td>Applies the next function(s) backwards</td></tr>
 <tr><td>x</td><td>A confirmation message; if "ok", 1 is stored to the current byte; 0 otherwise.</td></tr>
 <tr><td>y</td><td>Takes the current byte n and takes the n previous entries and pushes it into a tuple, then storing the tuple in the byte n bytes away OR if the current byte is a tuple, expands the tuple into n bytes (inclusive of the current byte, going out.)</td></tr>
 <tr><td>z</td><td>Resets the byte to zero</td></tr>
@@ -114,6 +118,8 @@
 <tr><td>{…}</td><td>While loop. Execution continues until the current byte is zero.</td></tr>
 <tr><td>!…!</td><td>Comments!</td></tr>
 <tr><td>@</td><td>Copies the current byte to the register OR if there is a value in the register, empties the register onto the current byte</td></tr>
+<tr><td>-</td><td>Dumps the value of the register into the void</td></tr>
+<tr><td>&</td><td>Equivalent to @@</td></tr>
 <tr><td>#</td><td>Stops evaluation</td></tr>
 <tr><td>;</td><td>Pushes the current character to the outer program (ability to compile to itself); if there are characters on the outer program at the end of execution, evaluates the outer program as the inner program.</td></tr>
 <tr><td>`</td><td>This command's effect varies, being dependant on the number of instances in the program of it: (1 instances) Suppresses evaluation of outer program. (2 instances) and instead outputs it. (3 instances) Evaluates outer program, copying the current program to the next outer program.</td></tr>
