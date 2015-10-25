@@ -142,6 +142,9 @@
 <tr><td>'</td><td>Sets the current byte to the next char code.</td></tr>
 <tr><td>(…)n</td><td>Repeats … n times (pre-code compilation). If left off, assumed to be repeated once.</td></tr>
 </table>
+<h1>
+<a id="commands" class="anchor" href="#commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Regex Form</h1>
+<p>There are three parts to a Simplex Regex: the query section, the tag section, and the replacement section, in that order. A Simplex Regex (hereafter called a &ldquo;SiRegex&rdquo;) might look like this: <code>/query/tags/repl/</code>. The following tags are available:<ol><li><code>g</code> - global match (if omitted, will only match the current cell)</li><li><code>i</code> - ignore case</li><li><code>t</code> - will put the matched selections in tuples joined by <code>repl</code>; said <code>repl</code> will be placed between each tuple.</li><li></li></ol> Within a SiRegex, one can use the following notations to refer to the strip, etc.: <ol><li><code>&x</code> is the value of the <code>x</code>th byte</li></ol></p>
       </section>
     </div>
 
