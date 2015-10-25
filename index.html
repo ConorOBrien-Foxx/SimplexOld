@@ -55,15 +55,16 @@
 
 <h1>
 <a id="commands" class="anchor" href="#commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commands</h1>
-<h2><a id="commands" class="anchor" href="#v06changes" aria-hidden="true"><span class="octicon octicon-link"></span></a>v.0.6</h2>
+<h2><a id="commands" class="anchor" href="#vpsixchanges" aria-hidden="true"><span class="octicon octicon-link"></span></a>v.0.6</h2>
 <h3>What's changed</h3>
 <ol>
   <li>Removed the <code>-</code> command</li>
   <li><code>@</code> now writes the cell to the register</li>
   <li><code>&</code> now writes the value in the register to the cell</li>
   <li>Added <code>_</code> command, which sets the cell to the square root of itself (equivalent to the command sequence <code>j1UERp</code>)</li>
+  <li><code>F</code> command now does not delete current byte</li>
 </ol>
-<h2><a id="commands" class="anchor" href="#v05" aria-hidden="true"><span class="octicon octicon-link"></span></a>v.0.5</h2>
+<h2><a id="commands" class="anchor" href="#vpfive" aria-hidden="true"><span class="octicon octicon-link"></span></a>v.0.5</h2>
 <table><tr><td>A</td><td>Adds the current byte to the previous byte and removes the current byte, decrements pointer</td></tr>
 <tr><td>B</td><td>Converts the byte to binary</td></tr>
 <tr><td>C</td><td>Takes the following regex and matches it with the strip, treating each value as a character in a string (see "regex form" below)</td></tr>
