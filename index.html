@@ -41,6 +41,10 @@
 
 <p>Simplex features a right-open memory tape (the term “strip” is also used synonymously), and can be compared to Brain**** in that it allows you to traverse this memory tape. The commands to traverse left and right are <code>L</code> and <code>R</code>, respectively. Traversing to a negative position isn't disallowed, but may/will result in buggy behaviour with other commands.</p>
 
+<p>(Also, as an aside, I will use an acronym to shorten what I am saying. When I say &ldquo;IUF&rdquo;, I mean &ldquo;In the Usual Fashion&rdquo;; this fashion is described as thus: for an <i>n</i>-ary command <i>C</i>, the function is executed using the current cell as the first argument, then the previous cell as the second argument, etc. The value of this function with its arguments is then set to the place of which the last argument was contained; all other cells in which other arguments resided in (except the register) are set to zero.</p>
+
+<p>Furthermore, when I use the notation (typeN,&hellip;,type1), I am saying that the first argument is of type1, the second of type2, &hellip;, the Nth of typeN. For example, a function that accepts (tuple,any) would require the current cell to be any type and the previous cell to be a tuple. Similarly, (int,tuple) would require the current byte to be a tuple and the previous byte to be an integer.)</p>
+
 <h2>
 <a id="pre--and-regular-processed-commands" class="anchor" href="#pre--and-regular-processed-commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pre- and regular-processed commands.</h2>
 
@@ -57,7 +61,14 @@
 <a id="commands" class="anchor" href="#commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commands</h1>
 <h2><a id="commands" class="anchor" href="#vpsevenchanges" aria-hidden="true"><span class="octicon octicon-link"></span></a>v.0.7</h2>
 <h3>What's changed</h3>
-<ol><li>Added mathrelations command <code>^</code>. It is followed by a character, which executes a command. Here are the commands that can be executed with it:<table>
+<ol>
+<li>Moved <code>r</code> command into mathrelations; <code>r</code> now does the following: The register holds a position, the byte a character. Replaces the register's value-d command in the code with the current byte as a character
+</li>
+<li>Moved <code>q</code> command into mathrelations; <code>q</code> now does the following: (num) sets the previous byte to the minimum of the current byte and the previous byte, sets the previous byte to zero<br>(tuple) returns the min element of that tuple
+</li>
+<li>Added <code>:</code> - Removes the last character from the outer program or, if there is a number following, removes the nth to last character from the outer program</li>
+<li>Added mathrelations command <code>^</code>. It is followed by a character, which executes a command. Here are the commands that can be executed with it:
+<table>
   <tr><td>A</td><td>sine of current byte</td></tr>
   <tr><td>B</td><td>tangent of current byte</td></tr>
   <tr><td>C</td><td>cosine of current byte</td></tr>
@@ -72,7 +83,30 @@
   <tr><td>L</td><td>calculates median of tuple/strip and sets it to the last byte</td></tr>
   <tr><td>M</td><td>sets current byte to absolute value of current byte</td></tr>
   <tr><td>N</td><td>sets current byte to the sign of current byte</td></tr>
-  <tr><td></td>O</td><td>squares current ybte</td></tr>
+  <tr><td>O</td><td>squares current byte</td></tr>
+  <tr><td>P</td><td>sets current byte to &Phi; = 1 - &phi; = (1-sqrt[5])/2</td></tr>
+  <tr><td>Q</td><td>tuple membership; if current byte is in the tuple held in the previous cell, sets the current byte to 1; otherwise, 0</td></tr>
+  <tr><td>R</td><td>(tuple, tuple): takes intersection of two tuples IUF<br>(num, num): takes the logical conjuction of the two cells IUF</td></tr>
+  <tr><td>S</td><td>(tuple, tuple): takes union of two tuples IUF<br>(num, num): takes the logical disjunction of the two cells IUF</td></tr>
+  <tr><td>T</td><td>(int): Sets the current byte to the (int)th triangular number (i.e. n(n+1)/2 = (n<sup>2</sup>+n)/2)</td></tr>
+  <tr><td>U</td><td>(/): sets the current byte to the empty/null set/tuple (&varnothing;)</td></tr>
+  <tr><td>V</td><td>(tuple, tuple): calculates set difference IUF<br>(num, num): Logically xor two bytes IUF</td></tr>
+  <tr><td>W</td><td>(tuple): sets current byte to permutation of tuple<br>(num): sets current byte to its factorial</td></tr>
+  <tr><td>X</td><td>(tuple): sum of tuple<br>(strip): sum of strip</td></tr>
+  <tr><td>Y</td><td>(tuple): product of tuple<br>(strip): sum of strip</td></tr>
+  <tr><td>Z</td><td>is the fold/reduce command performed on a tuple; implicit <code>[</code> follows <code>Z</code></td> Executes inner code. Within the code block constructed, one can use <code>^_</code> to access the current value, <code>^,</code> to access the previous value, and <code>^~</code> is the tuple.</tr>
+  <tr><td>a</td><td>arcsin of current byte</td></tr>
+  <tr><td>b</td><td>arctan of current byte</td></tr>
+  <tr><td>c</td><td>arccos of current byte</td></tr>
+  <tr><td>d</td><td>log<sub>10</sub> of current byte</td></tr>
+  <tr><td>e</td><td>ln of current byte</td></tr>
+  <tr><td>f</td><td>atan2 in the usual fashion (atan2(previous byte,current byte))</td></tr>
+  <tr><td>g</td><td>converts to degrees</td></tr>
+  <tr><td>h-o</td><td>"Currently unassigned"</td></tr>
+  <tr><td>p</td><td>Prints &phi; (golden ratio)</td></tr>
+  <tr><td>q</td><td>"Currently unassigned"</td></tr>
+  <tr><td>r</td><td>Reverses the current number, removing leading zeroes. (1000 &rarr; 1; 2340&rarr; 432; 1234 &rarr; 4321)</td></tr>
+  <tr><td>s-z</td><td>"Currently unassigned"</td></tr>
 </table></li></ol>
 <h2><a id="commands" class="anchor" href="#vpsixchanges" aria-hidden="true"><span class="octicon octicon-link"></span></a>v.0.6</h2>
 <h3>What's changed</h3>
