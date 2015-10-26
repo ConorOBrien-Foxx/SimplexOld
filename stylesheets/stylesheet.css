@@ -1,3 +1,7 @@
+p + p { 
+  text-indent: 20px;
+  text-indent: 5ch;
+}
 body {
   margin: 0;
   padding: 0;
