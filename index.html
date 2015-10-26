@@ -61,6 +61,7 @@
 <a id="commands" class="anchor" href="#commands" aria-hidden="true"><span class="octicon octicon-link"></span></a>Commands</h1>
 <h2><a id="commands" class="anchor" href="#vpsevenchanges" aria-hidden="true"><span class="octicon octicon-link"></span></a>v.0.7</h2>
 <h3>What's changed</h3>
+(note that the fold (<code>Z</code>) and map (<code>m</code>) commands create their own temporary strips)
 <ol>
 <li>Moved <code>r</code> command into mathrelations; <code>r</code> now does the following: The register holds a position, the byte a character. Replaces the register's value-d command in the code with the current byte as a character
 </li>
@@ -103,6 +104,7 @@
   <tr><td>f</td><td>atan2 in the usual fashion (atan2(previous byte,current byte))</td></tr>
   <tr><td>g</td><td>converts to degrees</td></tr>
   <tr><td>h-o</td><td>"Currently unassigned"</td></tr>
+  <tr><td>m</td><td>Followed by an implicit [. Same rules as fold for accessing index and member. Use ^N to indicate which index to "return", N a number</td></tr>
   <tr><td>p</td><td>Prints &phi; (golden ratio)</td></tr>
   <tr><td>q</td><td>"Currently unassigned"</td></tr>
   <tr><td>r</td><td>Reverses the current number, removing leading zeroes. (1000 &rarr; 1; 2340&rarr; 432; 1234 &rarr; 4321)</td></tr>
