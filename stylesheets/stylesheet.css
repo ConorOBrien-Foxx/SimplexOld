@@ -1,5 +1,5 @@
-p + p { 
-  text-indent: 20px;
+p + p {  /* +style modifier */
+  text-indent: 48.25px;
   text-indent: 5ch;
 }
 body {
